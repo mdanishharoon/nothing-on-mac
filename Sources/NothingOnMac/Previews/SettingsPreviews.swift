@@ -18,7 +18,7 @@ extension PreviewRenderer {
         // Nothing Ear (3): in-ear, codec, Audiodo, Super Mic, mic mode, walkie-talkie, call transparency.
         let ear3 = controller("7D46E5", replies: [
             (0x4042, Array("1.0.1.50".utf8)),
-            (0x4007, [0x03, 0x02, 64, 0x03, 81, 0x04, 0x80 | 45]),
+            (0x4007, [0x03, 0x02, 64, 0x03, 81, 0x04, 0xAD]), // case 45%, charging (0x80)
             (0x400E, [0x01, 0x01, 0x01]),
             (0x4027, [0x00]),
             (0x4029, [0x00]),

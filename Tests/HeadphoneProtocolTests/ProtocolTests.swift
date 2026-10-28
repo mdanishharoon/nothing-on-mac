@@ -92,9 +92,9 @@ let headphoneProBands = CustomEQBands(low: (140, 0.8), peak: (980, 0.7), high: (
     }
 
     @Test func battery() {
-        #expect(message(0x4007, [0x01, 0x06, 0x80 | 72]) ==
+        #expect(message(0x4007, [0x01, 0x06, 0xC8]) ==
             .battery([BatteryReading(component: 0x06, level: 72, isCharging: true)]))
-        #expect(message(0xE001, [0x03, 0x02, 40, 0x03, 41, 0x04, 0x80 | 90]) == .battery([
+        #expect(message(0xE001, [0x03, 0x02, 40, 0x03, 41, 0x04, 0xDA]) == .battery([
             BatteryReading(component: 0x02, level: 40, isCharging: false),
             BatteryReading(component: 0x03, level: 41, isCharging: false),
             BatteryReading(component: 0x04, level: 90, isCharging: true),

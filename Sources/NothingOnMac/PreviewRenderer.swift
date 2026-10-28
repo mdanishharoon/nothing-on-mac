@@ -59,7 +59,7 @@ enum PreviewRenderer {
         let budsBands = CustomEQBands(low: (140, 0.8), peak: (980, 0.7), high: (6900, 1.0))
         let earbuds = controller("F29566", replies: [
             (0x4042, Array("1.0.1.70".utf8)),
-            (0x4007, [0x03, 0x02, 64, 0x03, 81, 0x04, 0x80 | 45]),
+            (0x4007, [0x03, 0x02, 64, 0x03, 81, 0x04, 0xAD]), // case 45%, charging (0x80)
             (0x401E, [0x01, 0x07, 0x00]),
             (0x4050, [0x06, 0x00]),
             (0x4044, CustomEQ(bass: 3, mid: 0, treble: -2).payload(bands: budsBands)),

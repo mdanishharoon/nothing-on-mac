@@ -79,7 +79,7 @@ extension PreviewRenderer {
     }
 }
 
-/// Holds the session a bare feature view needs (features only keep an unowned reference).
+/// Holds the session a bare feature view needs.
 private struct KeepAlive<Content: View>: View {
     let session: DeviceSession
     let content: Content

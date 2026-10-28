@@ -12,7 +12,7 @@ extension FeatureRegistry {
 /// Button, pinch, tap, slider, roller and case knob / dial remapping (0xC018 / 0x4018 / 0xF003).
 @MainActor @Observable
 final class GestureFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var state = GestureState()
 
     init(_ session: DeviceSession) { self.session = session }

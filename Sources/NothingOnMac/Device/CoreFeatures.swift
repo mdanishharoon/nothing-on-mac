@@ -10,7 +10,7 @@ extension FeatureRegistry {
 
 @MainActor @Observable
 final class BatteryFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var readings: [UInt8: BatteryReading] = [:]
 
     init(_ session: DeviceSession) { self.session = session }
@@ -35,7 +35,7 @@ final class BatteryFeature: DeviceFeature {
 
 @MainActor @Observable
 final class NoiseControlFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var mode: NoiseControl?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -92,7 +92,7 @@ final class NoiseControlFeature: DeviceFeature {
 
 @MainActor @Observable
 final class EQFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     /// Last EQ level the device reported or we set.
     private(set) var level: UInt8?
     /// Advanced (parametric) EQ is on; it overrides `level`.
@@ -183,7 +183,7 @@ final class EQFeature: DeviceFeature {
 
 @MainActor @Observable
 final class SpatialAudioFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var mode: SpatialAudioMode?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -226,7 +226,7 @@ final class SpatialAudioFeature: DeviceFeature {
 
 @MainActor @Observable
 final class LowLatencyFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }

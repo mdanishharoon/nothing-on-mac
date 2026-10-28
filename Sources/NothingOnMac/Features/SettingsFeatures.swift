@@ -20,7 +20,7 @@ extension FeatureRegistry {
 
 @MainActor @Observable
 final class InEarDetectionFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -52,7 +52,7 @@ final class EarTipTestFeature: DeviceFeature {
         case timedOut
     }
 
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var state: State = .idle
     @ObservationIgnored private var timeout: Task<Void, Never>?
 
@@ -90,7 +90,7 @@ final class EarTipTestFeature: DeviceFeature {
 
 @MainActor @Observable
 final class FindDeviceFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     /// Targets currently ringing. There is no status read; this is our own toggle state.
     private(set) var ringing: Set<Side> = []
 
@@ -128,7 +128,7 @@ final class FindDeviceFeature: DeviceFeature {
 
 @MainActor @Observable
 final class CaseLEDFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var colours: CaseLEDColours?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -157,7 +157,7 @@ final class CaseLEDFeature: DeviceFeature {
 
 @MainActor @Observable
 final class PersonalisedANCFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -181,7 +181,7 @@ final class PersonalisedANCFeature: DeviceFeature {
 
 @MainActor @Observable
 final class DualConnectionFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
     private(set) var devices: [DualConnectionDevice] = []
     /// True once a list page has arrived.
@@ -293,7 +293,7 @@ final class DualConnectionFeature: DeviceFeature {
 
 @MainActor @Observable
 final class AudioCodecFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var codec: AudioCodec?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -339,7 +339,7 @@ final class AudioCodecFeature: DeviceFeature {
 final class PersonalSoundFeature: DeviceFeature {
     enum Backend { case mimi, audiodo }
 
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -384,7 +384,7 @@ final class PersonalSoundFeature: DeviceFeature {
 
 @MainActor @Observable
 final class SuperMicFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
     private(set) var micMode: MicMode?
 
@@ -416,7 +416,7 @@ final class SuperMicFeature: DeviceFeature {
 
 @MainActor @Observable
 final class WalkieTalkieFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -439,7 +439,7 @@ final class WalkieTalkieFeature: DeviceFeature {
 
 @MainActor @Observable
 final class CallTransparencyFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -462,7 +462,7 @@ final class CallTransparencyFeature: DeviceFeature {
 
 @MainActor @Observable
 final class LongPowerModeFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
 
     init(_ session: DeviceSession) { self.session = session }
@@ -498,7 +498,7 @@ final class LongPowerModeFeature: DeviceFeature {
 
 @MainActor @Observable
 final class AntiLeakageFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var mode: AntiLeakageMode?
 
     init(_ session: DeviceSession) { self.session = session }

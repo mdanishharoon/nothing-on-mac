@@ -138,6 +138,7 @@ final class HeadphoneController {
         batteryRefresh?.cancel()
         batteryRefresh = nil
         outbox.removeAll()
+        session?.close()
         session = nil
         identifiedSKU = nil
     }

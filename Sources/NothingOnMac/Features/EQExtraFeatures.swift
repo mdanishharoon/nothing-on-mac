@@ -19,7 +19,7 @@ enum EQBandSet: Hashable {
 /// this reads and writes the bands. Values are read when the editor appears (`refresh()`).
 @MainActor @Observable
 final class AdvancedEQFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     /// Working bands, edited live by the UI and sent with `commit()`.
     private(set) var main = AdvancedEQLayout.fixedDefault
     private(set) var driver = AdvancedEQLayout.defaults(AdvancedEQLayout.driverDefaults)
@@ -194,7 +194,7 @@ final class AdvancedEQFeature: DeviceFeature {
 /// Bass enhance / ultra bass: on/off plus a 5-stage (wire 2…10) or 3-stage (wire 0/5/10) level.
 @MainActor @Observable
 final class BassFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var enabled: Bool?
     /// UI level (1…5, or 0…2 on three-stage models); nil until known.
     private(set) var level: Int?
@@ -246,7 +246,7 @@ final class BassFeature: DeviceFeature {
 /// Flat EQ (B192 studio switch). Read-only: the user turns it off on the left earcup.
 @MainActor @Observable
 final class FlatEQFeature: DeviceFeature {
-    @ObservationIgnored unowned let session: DeviceSession
+    @ObservationIgnored let session: DeviceSession
     private(set) var isOn = false
 
     static let blockedMessage = "Flat EQ is on. Switch it off on the left earcup."

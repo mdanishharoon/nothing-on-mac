@@ -45,11 +45,22 @@ final class DeviceSession {
     }
 
     func send(_ requests: Request...) {
-        transport(requests)
+        send(requests)
     }
 
     func send(_ requests: [Request]) {
+        // A view can still hold a feature of an ended session; it must not reach a new device.
+        guard !isClosed else { return }
         transport(requests)
+    }
+
+    @ObservationIgnored private var isClosed = false
+
+    /// Ends the session: stops sending and releases the features (which hold the session
+    /// strongly, so they stay valid for any view still showing them).
+    func close() {
+        isClosed = true
+        features = []
     }
 
     func feature<T: DeviceFeature>(_ type: T.Type) -> T? {

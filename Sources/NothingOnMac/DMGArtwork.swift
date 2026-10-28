@@ -2,10 +2,11 @@
 import SwiftUI
 
 /// Background of the installer window, rendered by `NothingOnMac --render-dmg-background <dir>`
-/// and laid out by scripts/dmg-settings.py. Geometry here must match the icon positions there.
+/// and laid out by scripts/make-dmg.sh. Geometry here must match the window size and icon
+/// positions there.
 struct DMGBackground: View {
-    static let size = CGSize(width: 640, height: 420)
-    /// Icon centres in window coordinates (also in dmg-settings.py).
+    static let size = CGSize(width: 640, height: 340)
+    /// Icon centres in window coordinates (also in make-dmg.sh).
     static let appCenter = CGPoint(x: 170, y: 196)
     static let applicationsCenter = CGPoint(x: 470, y: 196)
 
@@ -26,33 +27,19 @@ struct DMGBackground: View {
             DotArrow()
                 .frame(width: 112, height: 28)
                 .position(x: (Self.appCenter.x + Self.applicationsCenter.x) / 2, y: Self.appCenter.y)
-
-            VStack(spacing: 8) {
-                Text("Drag Nothing on Mac into Applications")
-                    .font(.system(size: 14, weight: .semibold))
-                    .foregroundStyle(Color.white)
-                Text("First launch: System Settings › Privacy & Security › Open Anyway")
-                    .font(.system(size: 11))
-                    .foregroundStyle(Color(white: 0.56))
-            }
-            .frame(width: Self.size.width)
-            .position(x: Self.size.width / 2, y: 356)
         }
         .frame(width: Self.size.width, height: Self.size.height)
     }
 
-    /// A card behind each icon. Finder draws icon names black in Light Mode and white in Dark Mode,
-    /// so the name sits on a mid-grey strip along the card's bottom edge, readable either way.
+    /// A dark card behind each icon. Finder's icon name sits on it in near-black, so it recedes
+    /// and the icons carry the message.
     private func tile(at center: CGPoint) -> some View {
         let shape = RoundedRectangle(cornerRadius: 26, style: .continuous)
-        return VStack(spacing: 0) {
-            Theme.surface
-            Color(white: 0.43).frame(height: 34)
-        }
-        .clipShape(shape)
-        .overlay(shape.strokeBorder(Color.white.opacity(0.07), lineWidth: 1))
-        .frame(width: 168, height: 186)
-        .position(x: center.x, y: center.y + 9)
+        return shape
+            .fill(Theme.surface)
+            .overlay(shape.strokeBorder(Color.white.opacity(0.07), lineWidth: 1))
+            .frame(width: 168, height: 186)
+            .position(x: center.x, y: center.y + 9)
     }
 }
 

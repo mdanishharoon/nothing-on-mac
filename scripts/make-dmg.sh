@@ -38,7 +38,7 @@ hdiutil create -volname "$volume" -srcfolder "$staging" -fs HFS+ -format UDRW -s
 hdiutil attach "$work/rw.dmg" -readwrite -noverify -noautoopen -quiet
 
 
-# Window: 640x420 content (plus the title bar), no toolbar, fixed icon positions.
+# Window: 640x340 content (plus the title bar), no toolbar, status or path bar, fixed icon positions.
 osascript <<EOF
 tell application "Finder"
   tell disk "$volume"
@@ -46,7 +46,10 @@ tell application "Finder"
     set current view of container window to icon view
     set toolbar visible of container window to false
     set statusbar visible of container window to false
-    set the bounds of container window to {200, 140, 840, 588}
+    try
+      set pathbar visible of container window to false
+    end try
+    set the bounds of container window to {200, 140, 840, 508}
     set viewOptions to the icon view options of container window
     set arrangement of viewOptions to not arranged
     set icon size of viewOptions to 112

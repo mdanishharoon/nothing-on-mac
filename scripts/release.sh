@@ -22,13 +22,7 @@ plutil -replace CFBundleVersion -string "$build_number" Resources/Info.plist
 swift test
 scripts/build-app.sh
 
-# Disk image with the app and an Applications shortcut to drag it onto.
-staging="$(mktemp -d)"
-trap 'rm -rf "$staging"' EXIT
-cp -R "build/Nothing on Mac.app" "$staging/"
-ln -s /Applications "$staging/Applications"
-rm -f "$dmg"
-hdiutil create -volname "Nothing on Mac" -srcfolder "$staging" -fs HFS+ -format UDZO -ov "$dmg" >/dev/null
+scripts/make-dmg.sh "build/Nothing on Mac.app" "$dmg"
 if security find-certificate -c "$identity" >/dev/null 2>&1; then
   codesign --force --sign "$identity" "$dmg"
 fi

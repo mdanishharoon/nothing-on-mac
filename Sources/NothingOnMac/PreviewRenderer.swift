@@ -37,6 +37,13 @@ enum PreviewRenderer {
             write(AppIconArtwork(), to: URL(fileURLWithPath: arguments[flag + 1]), scale: 1)
             exit(0)
         }
+        if let flag = arguments.firstIndex(of: "--render-dmg-background"), flag + 1 < arguments.count {
+            AppResources.registerFonts()
+            let directory = URL(fileURLWithPath: arguments[flag + 1])
+            write(DMGBackground(), to: directory.appending(path: "background.png"), scale: 1)
+            write(DMGBackground(), to: directory.appending(path: "background@2x.png"), scale: 2)
+            exit(0)
+        }
         guard let flag = arguments.firstIndex(of: "--render-preview"), flag + 1 < arguments.count else { return }
         let directory = URL(fileURLWithPath: arguments[flag + 1])
         AppResources.registerFonts()

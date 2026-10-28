@@ -16,6 +16,11 @@ lives quietly in the menu bar and starts with your Mac.
 
 It's an unofficial app. It isn't made, endorsed or supported by Nothing Technology.
 
+> **Built on ear-web.** Nothing on Mac stands on the work of
+> [ear-web](https://github.com/radiance-project/ear-web), which worked out how Nothing and CMF
+> devices talk over Bluetooth. If you'd rather use your browser, try it at
+> [earweb.bttl.xyz](https://earweb.bttl.xyz/). See [Special thanks](#special-thanks).
+
 ## Supported devices
 
 **Nothing:** Ear (1), Ear (2), Ear (stick), Ear, Ear (a), Ear (open), Ear (3), Ear (3a),
@@ -117,11 +122,26 @@ NOM_RESOURCES=$PWD/Resources .build/debug/NothingOnMac --render-preview /tmp/pre
 - `Resources/Data`: `catalog.json` (every model and colour) and `ear_config.json` (per-model
   capabilities by firmware).
 
-## Credits
+## Special thanks
 
-The Bluetooth protocol and device data come from
-[ear-web](https://github.com/radiance-project/ear-web), the unofficial web app for Nothing and
-CMF audio. This app wouldn't exist without it.
+This app wouldn't exist without [ear-web](https://github.com/radiance-project/ear-web), the
+unofficial web app for Nothing and CMF audio by RapidZapper and Bendix, and everyone who has
+contributed device support to it. ear-web did the hard part: reverse-engineering the Bluetooth
+protocol and keeping up with every new model Nothing and CMF release. Nothing on Mac borrows
+heavily from that work:
+
+- the packet format and every command the app sends and understands
+- the device catalog (every model and colour, from ear-web's `control.js`) and the per-model,
+  per-firmware capabilities in `Resources/Data/ear_config.json`
+- how each model's features, EQ presets and gestures work
+- the product images
+
+What's new here is the native macOS app around it: the menu bar UI, Bluetooth handling,
+packaging, and the design. If Nothing on Mac is useful to you, please star and support
+[ear-web](https://github.com/radiance-project/ear-web) too, and report protocol discoveries
+there so every app benefits.
+
+## Credits
 
 The dot-matrix type is [Doto](https://github.com/oliverlalan/Doto) (SIL Open Font License,
 `Resources/Fonts/OFL.txt`).

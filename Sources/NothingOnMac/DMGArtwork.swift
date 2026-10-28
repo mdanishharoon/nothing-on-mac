@@ -15,31 +15,17 @@ struct DMGBackground: View {
             Color.black
             DotGrid(spacing: 14, radius: 1.1)
 
-            Text("NOTHING ON MAC")
+            Text("NOTHING")
                 .font(.doto(30))
                 .foregroundStyle(Color.white)
                 .frame(width: Self.size.width)
                 .position(x: Self.size.width / 2, y: 54)
-
-            tile(at: Self.appCenter)
-            tile(at: Self.applicationsCenter)
 
             DotArrow()
                 .frame(width: 112, height: 28)
                 .position(x: (Self.appCenter.x + Self.applicationsCenter.x) / 2, y: Self.appCenter.y)
         }
         .frame(width: Self.size.width, height: Self.size.height)
-    }
-
-    /// A dark card behind each icon. Finder's icon name sits on it in near-black, so it recedes
-    /// and the icons carry the message.
-    private func tile(at center: CGPoint) -> some View {
-        let shape = RoundedRectangle(cornerRadius: 26, style: .continuous)
-        return shape
-            .fill(Theme.surface)
-            .overlay(shape.strokeBorder(Color.white.opacity(0.07), lineWidth: 1))
-            .frame(width: 168, height: 186)
-            .position(x: center.x, y: center.y + 9)
     }
 }
 
